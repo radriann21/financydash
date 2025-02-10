@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 
 import { UserCard } from "./UserCard"
-// Menu items.
+
 const items = [
   {
     title: "Home",

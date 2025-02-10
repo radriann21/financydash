@@ -1,16 +1,18 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Goal, Home, Scale, Wallet, Settings } from "lucide-react"
 
 import {
   Sidebar,
+  SidebarHeader,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarFooter
 } from "@/components/ui/sidebar"
 
+import { UserCard } from "./UserCard"
 // Menu items.
 const items = [
   {
@@ -19,19 +21,19 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Balance",
     url: "#",
-    icon: Inbox,
+    icon: Scale,
   },
   {
-    title: "Calendar",
+    title: "Goals",
     url: "#",
-    icon: Calendar,
+    icon: Goal,
   },
   {
-    title: "Search",
+    title: "Accounts",
     url: "#",
-    icon: Search,
+    icon: Wallet,
   },
   {
     title: "Settings",
@@ -43,9 +45,9 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent>
+      <SidebarHeader className="font-bold text-lg p-2">FinancyDash</SidebarHeader>
+      <SidebarContent className="px-2">
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -62,6 +64,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <UserCard />
+      </SidebarFooter>
     </Sidebar>
   )
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -14,6 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useUserStore } from "../store/UserStore";
 
 const userSchema = z.object({
   username: z.string({
@@ -23,6 +25,8 @@ const userSchema = z.object({
 })
 
 export function UserForm() {
+  const setUser = useUserStore((state) => state.setUser)
+  const router = useRouter()
   const form = useForm<z.infer<typeof userSchema>>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -32,9 +36,23 @@ export function UserForm() {
 
   function onSubmit(values: z.infer<typeof userSchema>) {
     const { username } = values
-    if (!localStorage.getItem(username)) {
-      localStorage.setItem('username', username)
+    const user:UserFinancialInfo = {
+      username,
+      id: crypto.randomUUID(),
+      balance: 0,
+      income: 0,
+      expenses: 0,
+      accounts: [],
+      goals: [],
+      transactions: []
     }
+    if (!localStorage.getItem('user')) {
+      localStorage.setItem('user', JSON.stringify(user))
+      router.push(`/dashboard`)
+      setUser(user)
+      return
+    }
+    router.push(`/dashboard`)
   }
 
   return (

@@ -9,7 +9,6 @@ type AccountInfo = {
   type: 'bank' | 'credit_card' | 'investment' | 'loan'
   balance: number,
   creditLimit?: number,
-  typeOfAccount: string,
   description: string
 }
 
@@ -31,7 +30,8 @@ type Transaction = {
   date: Date,
   description: string,
   amount: number,
-  type: 'income' | 'expense'
+  type: 'income' | 'expense',
+  account?: AccountInfo
 }
 
 type GoalInfo = {
@@ -40,7 +40,8 @@ type GoalInfo = {
   description: string,
   category: GoalCategory,
   targetAmount: number,
-  currentAmount: number
+  currentAmount: number,
+  deadline: Date
 }
 
 interface UserFinancialInfo extends UserInfo {

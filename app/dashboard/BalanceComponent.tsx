@@ -1,66 +1,70 @@
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowRightToLine } from "lucide-react"
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { PlusIcon, ArrowLeftRight, SquareArrowOutUpRight } from "lucide-react"
+import { EmptyState } from "./EmptyState"
 
 export const BalanceComponent = () => {
 
-  const chartConfig = {
-    desktop: {
-      label: "Desktop",
-      color: "hsl(var(--chart-1))",
+  const accounts:AccountInfo[] = [
+    {
+      id: '1',
+      name: 'Main Savings',
+      type: 'bank',
+      balance: 238.45,
+      description: 'Main savings account'
     },
-  } satisfies ChartConfig
-  
-  const monthlyBalanceMock = [
-    {name: "January", value: 500},
-    {name: "February", value: 700},
-    {name: "March", value: 300},
-    {name: "April", value: 900},
-    {name: "May", value: 700},
-    {name: "June", value: 200},
-    {name: "July", value: 900},
-    {name: "August", value: 500},
-    {name: "September", value: 500},
-    {name: "October", value: 700},
-    {name: "November", value: 300},
-    {name: "December", value: 800},
+    {
+      id: '2',
+      name: 'Credit Card',
+      type: 'credit_card',
+      balance: 500,
+      creditLimit: 1000,
+      description: 'Credit card'
+    }
   ]
-  
 
   return (
-    <Card className="col-span-2 row-span-1 h-fit">
+    <Card className="col-span-2 row-span-1">
       <CardHeader>
-        <CardTitle className="text-2xl">Actual Balance</CardTitle>
+        <CardTitle className="text-xl font-bold">
+          <span className="text-muted-foreground text-sm font-thin block">
+            Total Balance
+          </span>
+          $238.45
+        </CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer className="max-h-[220px] w-full" config={chartConfig}>
-          <LineChart
-            accessibilityLayer
-            data={monthlyBalanceMock}
-            margin={{
-              left: 12,
-              right: 12
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis 
-              dataKey="name"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={9}
-              tickFormatter={(value) => value.slice(0,3)}
-            />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel /> } />
-            <Line dataKey="value" type="linear" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
-          </LineChart>
-        </ChartContainer>
+        <h5 className="text-slate-200">Accounts</h5>
+        <ul className="w-full flex flex-col space-y-2 mt-2">
+          {
+            accounts.length === 0
+            ? <EmptyState />
+            : (accounts.map(account => (
+              <li className="text-sm p-2 rounded-md duration-300 ease-in-out transition-colors hover:bg-slate-500/20 flex items-center justify-between" key={account.id}>
+                <div className="flex flex-col space-y-1">
+                  <h3 className="font-bold">{account.name}</h3>
+                  <span className="text-sm text-slate-300">{account.description}</span>
+                </div>
+                <div>
+                  <h3 className="font-bold">${account.balance}</h3>
+                </div>
+              </li>
+            )))
+          }
+        </ul>
       </CardContent>
-      <CardFooter>
-        <Button className="font-semibold">
-          View Full Balance
-          <ArrowRightToLine className="ml-1" />
+      <CardFooter className="flex items-center space-x-4">
+        <Button className="text-[12px] font-semibold">
+          Add Account
+          <PlusIcon className="ml-1" />
+        </Button>
+        <Button className="text-[12px] font-semibold">
+          New Transaction
+          <ArrowLeftRight className="ml-1" />
+        </Button>
+        <Button className="text-[12px] font-semibold">
+          All Accounts
+          <SquareArrowOutUpRight className="ml-1" />
         </Button>
       </CardFooter>
     </Card>

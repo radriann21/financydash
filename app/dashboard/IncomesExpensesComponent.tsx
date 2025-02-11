@@ -39,7 +39,7 @@ export const IncomesExpensesComponent = () => {
   return (
     <Card className="col-span-2 row-span-1 h-fit">
       <CardHeader>
-        <CardTitle className="text-2xl">Incomes and Expenses</CardTitle>
+        <CardTitle className="text-xl">Incomes and Expenses</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer className="max-h-[220px] w-full" config={chartConfig}>

@@ -60,7 +60,7 @@ export const TransactionsComponent = () => {
     <Card className="col-span-4 row-span-1 h-fit p-4">
       <CardHeader className="w-full">
         <div className="w-full flex items-center justify-between">
-          <CardTitle className="text-2xl font-bold">Transactions</CardTitle>
+          <CardTitle className="text-xl font-bold">Transactions</CardTitle>
           <Button className="font-semibold">
             See all transactions
             <ArrowLeftRight />

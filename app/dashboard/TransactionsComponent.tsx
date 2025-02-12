@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
+import { EmptyState } from "../components/EmptyState"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ArrowLeftRight } from "lucide-react"
+import { ArrowLeftRight, ClipboardX } from "lucide-react"
 
 export const TransactionsComponent = () => {
 
@@ -57,18 +58,28 @@ export const TransactionsComponent = () => {
   ]
 
   return (
-    <Card className="col-span-4 row-span-1 h-fit p-4">
+    <Card className="col-span-4 row-span-1 p-4 bg-[#151518] h-fit font-geistSans">
       <CardHeader className="w-full">
         <div className="w-full flex items-center justify-between">
           <CardTitle className="text-xl font-bold">Transactions</CardTitle>
-          <Button className="font-semibold">
-            See all transactions
+          <Button className="font-semibold" disabled={transactions.length === 0}>
+            {transactions.length === 0 
+              ? 'No transactions yet' 
+              : 'See all transactions'
+            }
             <ArrowLeftRight />
           </Button>
         </div>
       </CardHeader>
       <CardContent>
-        <Table>
+        {
+          transactions.length === 0 
+          ? <EmptyState 
+              title="No transactions yet" 
+              description="When you make a transaction, it will appear here." 
+              icon={ClipboardX} 
+            /> 
+          : <Table>
           <TableCaption>A list of your recent transactions</TableCaption>
           <TableHeader>
             <TableRow>
@@ -93,6 +104,7 @@ export const TransactionsComponent = () => {
             }
           </TableBody>
         </Table>
+        }
       </CardContent>
     </Card>
   )

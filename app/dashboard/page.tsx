@@ -15,15 +15,15 @@ export default function Dashboard() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full p-4"> 
+      <main className="w-full p-4 bg-[#0F0F12]"> 
         <div className="w-full flex items-center space-x-2">
           <div className="flex items-center">
             <SidebarTrigger />
             <Separator className="bg-slate-100 h-5" orientation="vertical" />
           </div>
-          <h1 className="text-3xl font-bold text-white">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-white font-geistSans">Dashboard</h1>
         </div>
-        <section className="mt-8 w-full grid grid-cols-4 grid-rows-2 gap-12 h-screen"> 
+        <section className="mt-4 w-full grid grid-cols-4 grid-rows-2 gap-4 min-h-screen"> 
           <BalanceComponent />
           <IncomesExpensesComponent />
           <TransactionsComponent />

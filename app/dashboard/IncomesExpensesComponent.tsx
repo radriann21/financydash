@@ -37,7 +37,7 @@ export const IncomesExpensesComponent = () => {
   } satisfies ChartConfig
 
   return (
-    <Card className="col-span-2 row-span-1 h-fit">
+    <Card className="col-span-2 row-span-1 h-full bg-[#151518] space-y-8 font-geistSans">
       <CardHeader>
         <CardTitle className="text-xl">Incomes and Expenses</CardTitle>
       </CardHeader>

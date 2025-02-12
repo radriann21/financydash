@@ -62,11 +62,15 @@ export default {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
+  			lg: 'var(--radius)',	
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		}
-  	}
+  	},
+		fontFamily: {
+			geistMono: 'var(--font-geist-mono)',
+			geistSans: 'var(--font-geist-sans)',
+		}
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

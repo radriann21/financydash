@@ -1,6 +1,6 @@
 import { Card, CardContent,CardFooter } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { CircleEllipsis, User, Laugh, LogOut } from "lucide-react"
+import { CircleEllipsis } from "lucide-react"
 import { DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -9,13 +9,14 @@ import { DropdownMenu,
   DropdownMenuSeparator,
   DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { useUserStore } from "../store/UserStore"
+import { UserMenu } from "../utils/Menus"
 
 export const UserCard = () => {
 
   const user = useUserStore((state) => state.user)
 
   return (
-    <Card className="flex items-center justify-center px-2 bg-transparent h-full w-full">
+    <Card className="flex items-center justify-center px-2 bg-transparent h-full w-full font-geistSans">
       <CardContent className="flex items-center justify-center space-x-2 p-2">
         <Avatar className="w-8 h-8">
           <AvatarImage src="https://github.com/shadcn.png" />
@@ -35,18 +36,14 @@ export const UserCard = () => {
             <DropdownMenuLabel>Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem className="cursor-pointer">
-                <User className="h-4 w-4" />
-                User Settings
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer">
-                <Laugh className="h-4 w-4" />
-                Support
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer">
-                <LogOut className="h-4 w-4" />
-                Log Out
-              </DropdownMenuItem>
+              {
+                UserMenu.map((item, index) => (
+                  <DropdownMenuItem key={index} className="cursor-pointer">
+                    <item.icon className="h-4 w-4" />
+                    {item.title}
+                  </DropdownMenuItem>
+                ))
+              }
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>

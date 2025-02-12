@@ -5,13 +5,28 @@ type UserState = {
 }
 
 type Action = {
-  setUser: (user: UserFinancialInfo) => void
+  setUser: (user: UserFinancialInfo) => void,
+  setAccount: (account: AccountInfo) => void,
 }
 
 const storedUser = localStorage.getItem('user')
-const user: UserFinancialInfo = storedUser ? JSON.parse(storedUser) : null
+const user: UserFinancialInfo | null = storedUser ? JSON.parse(storedUser) : null
 
 export const useUserStore = create<UserState & Action>((set) => ({
   user,
-  setUser: (user: UserFinancialInfo) => set(() => ({ user }))
+  setUser: (user: UserFinancialInfo) => set({ user }),
+  setAccount: (account: AccountInfo) => set((state) => {
+    if (!state.user) return state;
+    
+    const user = {
+      ...state.user,
+      accounts: [...state.user.accounts, account]
+    }
+
+    localStorage.setItem('user', JSON.stringify(user))
+
+    return {
+      user
+    }
+  })
 }))

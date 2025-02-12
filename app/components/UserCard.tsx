@@ -1,6 +1,5 @@
 import { Card, CardContent,CardFooter } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { CircleEllipsis, User, Laugh, LogOut } from "lucide-react"
 import { DropdownMenu,
   DropdownMenuContent,
@@ -30,9 +29,7 @@ export const UserCard = () => {
       <CardFooter className="p-0">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button className="w-fit h-fit rounded-full bg-transparent hover:bg-slate-500/40">
-              <CircleEllipsis className="stroke-white" />
-            </Button>
+            <CircleEllipsis className="stroke-white" />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
             <DropdownMenuLabel>Account</DropdownMenuLabel>

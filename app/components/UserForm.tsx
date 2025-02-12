@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import userSchema from "../schemas/userShema"
 import { useForm } from "react-hook-form";
 import {
   Form,
@@ -17,12 +18,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useUserStore } from "../store/UserStore";
 
-const userSchema = z.object({
-  username: z.string({
-    required_error: 'Username is required',
-    invalid_type_error: 'Username must be a string'
-  }).min(5, { message: 'Must be at least 5 characters' })
-})
 
 export function UserForm() {
   const setUser = useUserStore((state) => state.setUser)
@@ -39,7 +34,7 @@ export function UserForm() {
     const user:UserFinancialInfo = {
       username,
       id: crypto.randomUUID(),
-      balance: 0,
+      totalBalance: 0,
       income: 0,
       expenses: 0,
       accounts: [],

@@ -1,4 +1,5 @@
 import { Goal, Home, Scale, Wallet, Settings } from "lucide-react"
+import Link from "next/link"
 
 import {
   Sidebar,
@@ -17,7 +18,7 @@ import { UserCard } from "./UserCard"
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/dashboard",
     icon: Home,
   },
   {
@@ -53,10 +54,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

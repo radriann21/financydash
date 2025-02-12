@@ -5,8 +5,8 @@ interface UserInfo {
 
 type AccountInfo = {
   id: string,
-  name: string,
-  type: 'bank' | 'credit_card' | 'investment' | 'loan'
+  account_name: string,
+  type: 'bank' | 'credit_card' | 'investment' | 'loan' | ''
   balance: number,
   creditLimit?: number,
   description: string
@@ -45,10 +45,10 @@ type GoalInfo = {
 }
 
 interface UserFinancialInfo extends UserInfo {
-  balance: number,
+  totalBalance: number,
   income: number
   expenses: number,
-  accounts: AccountInfo[],
-  goals: GoalInfo[],
+  accounts: AccountInfo[]
+  goals: GoalInfo[]
   transactions: Transaction[]
 }

@@ -7,6 +7,7 @@ import { AppSidebar } from "../components/AppSidebar";
 import { BalanceComponent } from "./BalanceComponent";
 import { IncomesExpensesComponent } from "./IncomesExpensesComponent";
 import { TransactionsComponent } from "./TransactionsComponent";
+import { Toaster } from "@/components/ui/toaster"
 
 export default function Dashboard() {
   // const user = useUserStore((state) => state.user)
@@ -27,6 +28,7 @@ export default function Dashboard() {
           <IncomesExpensesComponent />
           <TransactionsComponent />
         </section>
+        <Toaster />
       </main>
     </SidebarProvider>
   )

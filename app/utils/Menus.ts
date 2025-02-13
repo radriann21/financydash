@@ -18,7 +18,7 @@ export const SidebarItems = [
   },
   {
     title: "Accounts",
-    url: "#",
+    url: "/dashboard/accounts",
     icon: Wallet,
   },
   {

@@ -5,11 +5,14 @@ const accountSchema = z.object({
     required_error: 'Account name is required',
     invalid_type_error: 'Account name must be a string'
   }).min(5, { message: 'Must be at least 5 characters' }),
-  type: z.enum(['bank', 'credit_card', 'investment', 'loan'], {
+  type: z.enum(['bank', 'credit_card', 'investment', 'loan', 'crypto'], {
     required_error: 'The type is required'
   }),
-  balance: z.string().transform((val) => parseFloat(val)).refine((val) => !isNaN(val), {
-    message: "Must be a valid number",
+  balance: z.coerce.number({
+    required_error: "Balance is required",
+    invalid_type_error: "Balance must be a number",
+  }).refine((val) => val >= 0, {
+    message: "Balance must be non-negative",
   }),
   description: z.string({ required_error: 'The description is required', invalid_type_error: 'The type is invalid' }).min(5, { message: 'Must be at least 5 characters' })
 })

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
-import { AccountForm } from "../components/AccountForm"
+import { AccountForm } from "./AccountForm"
 
 export const AddAccountDialog = () => {
   return (

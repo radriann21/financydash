@@ -6,10 +6,11 @@ interface UserInfo {
 type AccountInfo = {
   id: string,
   account_name: string,
-  type: 'bank' | 'credit_card' | 'investment' | 'loan' | ''
+  type: 'bank' | 'credit_card' | 'investment' | 'loan' | 'crypto',
   balance: number,
   creditLimit?: number,
-  description: string
+  description: string,
+  icon?: React.ElementType
 }
 
 enum GoalCategory {

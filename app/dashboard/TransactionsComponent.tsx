@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { EmptyState } from "../components/EmptyState"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"

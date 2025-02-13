@@ -16,7 +16,6 @@ import { z } from "zod"
 import { useUserStore } from "../store/UserStore"
 import { Import } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { DialogClose } from "@/components/ui/dialog"
 
 import accountSchema from "../schemas/accountSchema"
 
@@ -49,7 +48,7 @@ export const AccountForm = () => {
 
   return (
     <Form {...form}>
-      <form className="space-y-6 mt-4" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="space-y-6 mt-4 font-geistSans" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField 
             control={form.control}
             name="account_name"
@@ -80,6 +79,7 @@ export const AccountForm = () => {
                       <SelectItem value="credit_card">Credit Card</SelectItem>
                       <SelectItem value="investment">Investment</SelectItem>
                       <SelectItem value="loan">Loan</SelectItem>
+                      <SelectItem value="crypto">Crypto</SelectItem>
                     </SelectContent>
                   </Select>
                 <FormMessage />
@@ -116,12 +116,10 @@ export const AccountForm = () => {
               </FormItem>
             )}
           />
-          <DialogClose>
-            <Button type="submit">
-              Save Account
-              <Import className="ml-2" />
-            </Button>
-          </DialogClose>
+          <Button type="submit">
+            Save Account
+            <Import className="ml-2" />
+          </Button>
       </form>
     </Form>
   )

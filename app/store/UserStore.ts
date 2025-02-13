@@ -1,3 +1,5 @@
+"use client"
+
 import { create } from "zustand";
 
 type UserState = {
@@ -18,9 +20,13 @@ export const useUserStore = create<UserState & Action>((set) => ({
   setAccount: (account: AccountInfo) => set((state) => {
     if (!state.user) return state;
     
+    const updatedAccounts = [...state.user.accounts, account]
+    const newBalance = updatedAccounts.reduce((sum, account) => sum + account.balance, 0)
+
     const user = {
       ...state.user,
-      accounts: [...state.user.accounts, account]
+      totalBalance: newBalance,
+      accounts: updatedAccounts
     }
 
     localStorage.setItem('user', JSON.stringify(user))

@@ -14,9 +14,9 @@ export const AddAccountDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="text-[12px] font-semibold">
+        <Button className="font-semibold">
           Add Account
-          <PlusIcon className="ml-1" />
+          <PlusIcon />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

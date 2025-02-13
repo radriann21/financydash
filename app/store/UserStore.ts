@@ -9,6 +9,7 @@ type UserState = {
 type Action = {
   setUser: (user: UserFinancialInfo) => void,
   setAccount: (account: AccountInfo) => void,
+  deleteAccount: (id: string) => void
 }
 
 const storedUser = localStorage.getItem('user')
@@ -27,6 +28,23 @@ export const useUserStore = create<UserState & Action>((set) => ({
       ...state.user,
       totalBalance: newBalance,
       accounts: updatedAccounts
+    }
+
+    localStorage.setItem('user', JSON.stringify(user))
+
+    return {
+      user
+    }
+  }),
+  deleteAccount: (id: string) => set((state) => {
+    if (!state.user) return state;
+    const updatedAccount = state.user.accounts.filter(account => account.id !== id)
+    const newBalance = updatedAccount.reduce((sum, account) => sum + account.balance, 0)
+
+    const user = {
+      ...state.user,
+      totalBalance: newBalance,
+      accounts: updatedAccount
     }
 
     localStorage.setItem('user', JSON.stringify(user))

@@ -1,15 +1,9 @@
 import { accountIcons } from "../utils/accountsTypes"
+import { setColor } from "../utils/setColors"
 
 export const AccountItem = ({ account }: { account: AccountInfo }) => {
   const Icon = accountIcons[account.type as keyof typeof accountIcons]
-  const colors: Record<AccountInfo['type'], string> = {
-    bank: 'stroke-green-500',
-    credit_card: 'stroke-red-500',
-    investment: 'stroke-purple-500',
-    loan: 'stroke-orange-400',
-    crypto: 'stroke-yellow-500',
-  }
-  const color = colors[account.type]
+  const color = setColor(account)
 
   return (
     <li className="text-[12px] p-2 rounded-md duration-300 ease-in-out transition-colors hover:bg-slate-500/20 flex items-center justify-between" key={account.id}>

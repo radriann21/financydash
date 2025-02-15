@@ -82,7 +82,7 @@ export const IncomesExpensesComponent = () => {
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <Button className="font-bold">
+        <Button className="text-[12px] font-bold">
           <ArrowRightToLine />
           View more
         </Button>

@@ -64,7 +64,7 @@ export const TransactionsComponent = () => {
       <CardHeader className="w-full">
         <div className="w-full flex items-center justify-between">
           <CardTitle className="text-xl font-bold">Transactions</CardTitle>
-          <Button className="font-semibold" disabled={transactions.length === 0}>
+          <Button className="text-[12px] font-semibold" disabled={transactions.length === 0}>
             {transactions.length === 0 
               ? 'No transactions yet' 
               : 'See all transactions'

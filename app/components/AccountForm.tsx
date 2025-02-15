@@ -19,16 +19,19 @@ import { useUserStore } from "../store/UserStore"
 import { Import } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
-import accountSchema from "../schemas/accountSchema"
+import { accountSchema, partialSchema } from "../schemas/accountSchema"
 
-export const AccountForm = () => {
+export const AccountForm = ({ id }: { id?: string }) => {
 
   const toast = useToast()
   const setAccount = useUserStore((state) => state.setAccount)
+  const editAccount = useUserStore((state) => state.editAccount)
+  const accounts = useUserStore((state) => state.user?.accounts)
 
+  const initialData = id ? accounts?.find((account) => account.id === id) : null;
   const form = useForm<z.infer<typeof accountSchema>>({
-    resolver: zodResolver(accountSchema),
-    defaultValues: {
+    resolver: zodResolver(id ? partialSchema : accountSchema),
+    defaultValues: initialData ??{
       account_name: '',
       type: undefined,
       balance: 0,
@@ -37,15 +40,19 @@ export const AccountForm = () => {
   })
 
   const onSubmit = (values: z.infer<typeof accountSchema>) => {
-    const account = {
-      id: crypto.randomUUID(),
-      ...values,
-    };
-    setAccount(account);
-    toast.toast({
-      title: 'Account added',
-      description: 'Your account has been added successfully',
-    })
+    if (id && initialData) {
+      editAccount(id, { ...initialData, ...values });
+      toast.toast({
+        title: "Account updated",
+        description: "Your account has been updated successfully",
+      });
+    } else {
+      setAccount({ id: crypto.randomUUID(), ...values });
+      toast.toast({
+        title: "Account added",
+        description: "Your account has been added successfully",
+      });
+    }
   };
 
   return (

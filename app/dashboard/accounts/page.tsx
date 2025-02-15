@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
+import { Search, PlusIcon } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { AddAccountDialog } from "@/app/components/AddAccountDialog"
 import { useUserStore } from "@/app/store/UserStore"
@@ -47,13 +47,18 @@ export default function AccountsPage() {
           </Select>
         </div>
         <div>
-          <AddAccountDialog />
+          <AddAccountDialog
+            icon={PlusIcon}
+            btnTitle="Add Account"
+            title="Add Account"
+            description="Please, fill the form below to add a new account"
+          />
         </div>
       </section>
       <section className="mt-12 w-full grid grid-cols-2 gap-6">
         {
           filteredAccounts?.length === 0
-          ? ('No hay nada ahora')
+          ? ('There is nothing here yet.')
           : (filteredAccounts?.map(account => 
             <AccountCard key={account.id} account={account} />
           ))

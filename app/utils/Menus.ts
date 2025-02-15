@@ -1,4 +1,4 @@
-import { Goal, Home, Scale, Wallet, Settings, User, Laugh, LogOut } from "lucide-react"
+import { Goal, Home, Scale, Wallet, Settings, User, LogOut } from "lucide-react"
 
 export const SidebarItems = [
   {
@@ -32,10 +32,6 @@ export const UserMenu = [
   {
     title: 'User Settings',
     icon: User
-  },
-  {
-    title: 'Support',
-    icon: Laugh
   },
   {
     title: 'Logout',

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const accountSchema = z.object({
+export const accountSchema = z.object({
   account_name: z.string({
     required_error: 'Account name is required',
     invalid_type_error: 'Account name must be a string'
@@ -14,7 +14,7 @@ const accountSchema = z.object({
   }).refine((val) => val >= 0, {
     message: "Balance must be non-negative",
   }),
-  description: z.string({ required_error: 'The description is required', invalid_type_error: 'The type is invalid' }).min(5, { message: 'Must be at least 5 characters' })
+  description: z.string({ required_error: 'The description is required', invalid_type_error: 'The type is invalid' }).min(5, { message: 'Must be at least 5 characters' }).max(50, { message: 'Must be at most 50 characters' })
 })
 
-export default accountSchema 
+export const partialSchema = accountSchema.partial()

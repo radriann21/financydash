@@ -16,6 +16,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { AddAccountDialog } from "@/app/components/AddAccountDialog"
 
 export const AccountCard = ({ account }: { account: AccountInfo }) => {
 
@@ -60,10 +61,13 @@ export const AccountCard = ({ account }: { account: AccountInfo }) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      <Button className="transition-all duration-300 ease-in-out hover:text-blue-700 hover:shadow-sm hover:shadow-blue-100">
-        <Edit className="h-4 w-4" />
-        Edit
-      </Button>
+      <AddAccountDialog
+        id={account.id}
+        icon={Edit}
+        btnTitle="Edit Account"
+        title="Edit Account"
+        description="Please, fill the form below to edit the account"
+      />
      </div>
     </article>
   )

@@ -21,7 +21,7 @@ export default function AccountsPage() {
   })
 
   return (
-    <main className="w-full mt-4 font-geistSans">
+    <section className="w-full mt-4 font-geistSans">
       <section className="w-full flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="relative w-fit">
@@ -64,6 +64,6 @@ export default function AccountsPage() {
           ))
         }
       </section>
-    </main>
+    </section>
   )
 }

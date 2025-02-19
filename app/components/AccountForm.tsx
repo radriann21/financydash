@@ -31,7 +31,7 @@ export const AccountForm = ({ id }: { id?: string }) => {
   const initialData = id ? accounts?.find((account) => account.id === id) : null;
   const form = useForm<z.infer<typeof accountSchema>>({
     resolver: zodResolver(id ? partialSchema : accountSchema),
-    defaultValues: initialData ??{
+    defaultValues: initialData ?? {
       account_name: '',
       type: undefined,
       balance: 0,

@@ -13,7 +13,7 @@ type AccountInfo = {
   icon?: React.ElementType
 }
 
-enum GoalCategory {
+export enum GoalCategory {
   Financial = 'financial',
   Health = 'health',
   Personal = 'personal',

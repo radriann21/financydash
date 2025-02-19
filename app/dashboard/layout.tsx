@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const getTitle = () => {
     if (pathname === "/dashboard/balance") return "Balance"
     if (pathname === "/dashboard/transactions") return "Transactions"
-    if (pathname === "/dashboard/categories") return "Categories"
+    if (pathname === "/dashboard/goals") return "Goals"
     if (pathname === "/dashboard/accounts") return "Accounts"
     return "Dashboard"
   }

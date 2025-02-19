@@ -1,5 +1,6 @@
 "use client"
 
+import type { UserFinancialInfo, AccountInfo, GoalInfo } from "@/types/types";
 import { create } from "zustand";
 
 type UserState = {
@@ -9,8 +10,10 @@ type UserState = {
 type Action = {
   setUser: (user: UserFinancialInfo) => void,
   setAccount: (account: AccountInfo) => void,
-  deleteAccount: (id: string) => void
-  editAccount: (id: string, account: AccountInfo) => void
+  deleteAccount: (id: string) => void,
+  editAccount: (id: string, account: AccountInfo) => void,
+  setGoal: (goal: GoalInfo) => void
+  deleteGoal: (id: string) => void
 }
 
 const storedUser = localStorage.getItem('user')
@@ -71,5 +74,25 @@ export const useUserStore = create<UserState & Action>((set) => ({
     return {
       user
     }
+  }),
+  setGoal: (goal: GoalInfo) => set((state) => {
+    if (!state.user) return state;
+    const updatedGoals = [...state.user.goals, goal]
+    const user = {
+      ...state.user,
+      goals: updatedGoals
+    }
+    localStorage.setItem('user', JSON.stringify(user))
+    return { user }
+  }),
+  deleteGoal: (id: string) => set((state) => {
+    if (!state.user) return state;
+    const updatedGoals = state.user.goals.filter(goal => goal.id !== id)
+    const user = {
+      ...state.user,
+      goals: updatedGoals
+    }
+    localStorage.setItem('user', JSON.stringify(user))
+    return { user }
   })
 }))

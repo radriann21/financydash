@@ -13,7 +13,7 @@ export const SidebarItems = [
   },
   {
     title: "Goals",
-    url: "#",
+    url: "/dashboard/goals",
     icon: Goal,
   },
   {

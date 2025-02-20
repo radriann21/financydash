@@ -1,12 +1,13 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { AddAccountDialog } from "../components/AddAccountDialog";
 import { Button } from "@/components/ui/button";
 import { BookDashed, SquareArrowOutUpRight, PlusIcon } from "lucide-react";
 import { EmptyState } from "../components/EmptyState";
 import { useUserStore } from "../store/UserStore";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AccountItem } from "../components/AccountItem";
-import { TransactionsDialog } from "../components/TransactionsDialog";
+import { CustomDialog } from "../components/CustomDialog";
+import { AccountForm } from "../components/AccountForm";
+import { TransactionsForm } from "../components/TransactionsForm";
 import Link from "next/link";
 
 export const BalanceComponent = () => {
@@ -38,13 +39,20 @@ export const BalanceComponent = () => {
         </ScrollArea>
       </CardContent>
       <CardFooter className="flex items-center space-x-4 mt-4">
-        <AddAccountDialog
+        <CustomDialog 
           icon={PlusIcon}
           btnTitle="Add Account"
           title="Add Account" 
           description="Please, fill the form below to add a new account"
+          Form={AccountForm}
         />
-        <TransactionsDialog />
+        <CustomDialog 
+          icon={PlusIcon}
+          btnTitle="Add Transaction"
+          title="Add Transaction" 
+          description="Please, fill the form below to add a new transaction"
+          Form={TransactionsForm}
+        />
         <Link href="/dashboard/accounts">
           <Button className="text-[12px] font-semibold">
             All Accounts

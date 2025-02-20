@@ -30,7 +30,6 @@ import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { Input } from "@/components/ui/input"
 
-
 export const TransactionsForm = () => {
 
   const setTransaction = useUserStore((state) => state.setTransaction)

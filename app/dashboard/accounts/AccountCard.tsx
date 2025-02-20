@@ -1,5 +1,6 @@
 "use client"
 import { accountIcons } from "@/app/utils/accountsTypes"
+import { AccountInfo } from "@/app/types/types"
 import { setColor } from "@/app/utils/setColors"
 import { Button } from "@/components/ui/button"
 import { Trash } from "lucide-react"
@@ -16,7 +17,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { AddAccountDialog } from "@/app/components/AddAccountDialog"
+import { CustomDialog } from "@/app/components/CustomDialog"
+import { AccountForm } from "@/app/components/AccountForm"
 
 export const AccountCard = ({ account }: { account: AccountInfo }) => {
 
@@ -61,8 +63,9 @@ export const AccountCard = ({ account }: { account: AccountInfo }) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      <AddAccountDialog
-        id={account.id}
+      <CustomDialog 
+        Form={AccountForm}
+        elementId={account.id}
         icon={Edit}
         btnTitle="Edit Account"
         title="Edit Account"

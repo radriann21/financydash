@@ -4,10 +4,10 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Search, PlusIcon } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { AddAccountDialog } from "@/app/components/AddAccountDialog"
+import { CustomDialog } from "@/app/components/CustomDialog"
 import { useUserStore } from "@/app/store/UserStore"
 import { AccountCard } from "./AccountCard" 
-
+import { AccountForm } from "@/app/components/AccountForm"
 
 export default function AccountsPage() {
   const [type, setType] = useState<string | null>(null)
@@ -47,11 +47,12 @@ export default function AccountsPage() {
           </Select>
         </div>
         <div>
-          <AddAccountDialog
+          <CustomDialog 
             icon={PlusIcon}
             btnTitle="Add Account"
             title="Add Account"
             description="Please, fill the form below to add a new account"
+            Form={AccountForm}
           />
         </div>
       </section>

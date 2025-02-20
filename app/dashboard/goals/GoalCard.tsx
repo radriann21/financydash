@@ -1,18 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GoalInfo } from "@/app/types/types"
 import { Trash } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 import { useUserStore } from "@/app/store/UserStore"
+import { formatDate } from "@/app/utils/formatDate"
 
 export const GoalCard = ({ goal }: { goal: GoalInfo }) => {
 
   const deleteGoal = useUserStore((state) => state.deleteGoal)
-
-  const formatDate = (date: any): string => {
-    if (!date) return "Fecha no disponible"
-    const parsedDate = new Date(date)
-    return isNaN(parsedDate.getTime()) ? "Fecha inválida" : parsedDate.toDateString()
-  }
 
   return (
     <div className="w-full rounded-md p-4 bg-[#151518]" key={goal.id}>

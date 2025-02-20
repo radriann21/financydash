@@ -1,6 +1,6 @@
 "use client"
 
-import type { UserFinancialInfo, AccountInfo, GoalInfo } from "@/types/types";
+import type { UserFinancialInfo, AccountInfo, GoalInfo, Transaction } from "@/app/types/types";
 import { create } from "zustand";
 
 type UserState = {
@@ -14,6 +14,7 @@ type Action = {
   editAccount: (id: string, account: AccountInfo) => void,
   setGoal: (goal: GoalInfo) => void
   deleteGoal: (id: string) => void
+  setTransaction: (transaction: Transaction) => void
 }
 
 const storedUser = localStorage.getItem('user')
@@ -94,5 +95,38 @@ export const useUserStore = create<UserState & Action>((set) => ({
     }
     localStorage.setItem('user', JSON.stringify(user))
     return { user }
-  })
+  }),
+  setTransaction: (transaction: Transaction) =>
+    set((state) => {
+      if (!state.user) return state;
+  
+      const updateAccountBalance = (account: AccountInfo): AccountInfo => {
+        if (account.id !== transaction.accountId) return account;
+  
+        if (transaction.type === "expense" && account.balance < transaction.amount) {
+          throw new Error("Insufficient balance in the account");
+        }
+  
+        const newBalance =
+          transaction.type === "expense"
+            ? account.balance - transaction.amount
+            : account.balance + transaction.amount;
+  
+        return { ...account, balance: newBalance };
+      };
+
+      const updatedAccounts = state.user.accounts.map(updateAccountBalance);
+      const updatedBalance = updatedAccounts.reduce((sum, account) => sum + account.balance, 0);
+  
+      const user = {
+        ...state.user,
+        transactions: [...state.user.transactions, transaction],
+        accounts: updatedAccounts,
+        totalBalance: updatedBalance
+      };
+  
+      localStorage.setItem("user", JSON.stringify(user));
+  
+      return { user }
+    })
 }))

@@ -1,11 +1,12 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { AddAccountDialog } from "../components/AddAccountDialog";
 import { Button } from "@/components/ui/button";
-import { ArrowLeftRight, BookDashed, SquareArrowOutUpRight, PlusIcon } from "lucide-react";
+import { BookDashed, SquareArrowOutUpRight, PlusIcon } from "lucide-react";
 import { EmptyState } from "../components/EmptyState";
 import { useUserStore } from "../store/UserStore";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AccountItem } from "../components/AccountItem";
+import { TransactionsDialog } from "../components/TransactionsDialog";
 import Link from "next/link";
 
 export const BalanceComponent = () => {
@@ -43,10 +44,7 @@ export const BalanceComponent = () => {
           title="Add Account" 
           description="Please, fill the form below to add a new account"
         />
-        <Button className="text-[12px] font-semibold">
-          New Transaction
-          <ArrowLeftRight className="ml-1" />
-        </Button>
+        <TransactionsDialog />
         <Link href="/dashboard/accounts">
           <Button className="text-[12px] font-semibold">
             All Accounts

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GoalInfo } from "@/types/types"
+import { GoalInfo } from "@/app/types/types"
 import { Trash } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 import { useUserStore } from "@/app/store/UserStore"

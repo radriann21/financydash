@@ -26,13 +26,18 @@ export enum GoalCategory {
   Other = 'other'
 }
 
+export enum TransactionType {
+  Income = 'income',
+  Expense = 'expense'
+}
+
 type Transaction = {
   id: string,
   date: Date,
   description: string,
   amount: number,
-  type: 'income' | 'expense',
-  account?: AccountInfo
+  type: TransactionType,
+  accountId: string
 }
 
 type GoalInfo = {

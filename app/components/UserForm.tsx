@@ -19,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { useUserStore } from "../providers/userStoreProvider";
 import type { UserFinancialInfo } from "../types/types";
 
-
 export function UserForm() {
   const setUser = useUserStore((state) => state.setUser)
   const router = useRouter()
@@ -74,5 +73,4 @@ export function UserForm() {
       </form>
     </Form>
   )
-
 }

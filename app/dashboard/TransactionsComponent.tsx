@@ -5,7 +5,7 @@ import { EmptyState } from "../components/EmptyState"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ArrowLeftRight, ClipboardX } from "lucide-react"
-import { useUserStore } from "../store/UserStore"
+import { useUserStore } from "../providers/userStoreProvider"
 import { TransactionRow } from "../components/TransactionRow"
 import Link from "next/link"
 

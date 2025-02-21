@@ -2,7 +2,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button";
 import { BookDashed, SquareArrowOutUpRight } from "lucide-react";
 import { EmptyState } from "../components/EmptyState";
-import { useUserStore } from "../store/UserStore";
+import { useUserStore } from "../providers/userStoreProvider";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AccountItem } from "../components/AccountItem";
 import { CustomDialog } from "../components/CustomDialog";

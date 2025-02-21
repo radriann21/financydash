@@ -1,6 +1,6 @@
 import { TableRow, TableCell } from "@/components/ui/table"
 import type { Transaction } from "@/app/types/types"
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 import { formatDate } from "@/app/utils/formatDate"
 import { ArrowDownRight, ArrowUpRight, MoveRight } from "lucide-react"
 

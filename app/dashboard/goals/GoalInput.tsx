@@ -47,7 +47,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { CalendarIcon } from "lucide-react"
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 
 
 export const GoalInput = () => {

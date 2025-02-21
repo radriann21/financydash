@@ -1,6 +1,6 @@
 "use client"
 
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 import { EmptyState } from "@/app/components/EmptyState"
 import { BookDashed } from "lucide-react"
 import { GoalCard } from "./GoalCard"

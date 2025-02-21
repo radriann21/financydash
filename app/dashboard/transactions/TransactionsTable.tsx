@@ -12,7 +12,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 import { TransactionRow } from "@/app/components/TransactionRow"
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 
 const ITEMS_PER_PAGE = 10
 

@@ -4,8 +4,7 @@ import { AccountInfo } from "@/app/types/types"
 import { setColor } from "@/app/utils/setColors"
 import { Button } from "@/components/ui/button"
 import { Trash } from "lucide-react"
-import { Edit } from "lucide-react"
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -66,7 +65,6 @@ export const AccountCard = ({ account }: { account: AccountInfo }) => {
       <CustomDialog 
         Form={AccountForm}
         elementId={account.id}
-        icon={Edit}
         btnTitle="Edit Account"
         title="Edit Account"
         description="Please, fill the form below to edit the account"

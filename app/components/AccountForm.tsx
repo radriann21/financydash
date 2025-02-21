@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { useUserStore } from "../store/UserStore"
+import { useUserStore } from "../providers/userStoreProvider"
 import { Import } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 

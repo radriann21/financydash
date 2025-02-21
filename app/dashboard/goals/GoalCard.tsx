@@ -1,7 +1,7 @@
 import { GoalInfo } from "@/app/types/types"
 import { Trash } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 import { formatDate } from "@/app/utils/formatDate"
 
 export const GoalCard = ({ goal }: { goal: GoalInfo }) => {

@@ -1,7 +1,5 @@
-"use client"
-
 import type { UserFinancialInfo, AccountInfo, GoalInfo, Transaction } from "@/app/types/types";
-import { create } from "zustand";
+import { createStore } from "zustand/vanilla";
 
 type UserState = {
   user: UserFinancialInfo | null
@@ -17,11 +15,24 @@ type Action = {
   setTransaction: (transaction: Transaction) => void
 }
 
-const storedUser = localStorage.getItem('user')
-const user: UserFinancialInfo | null = storedUser ? JSON.parse(storedUser) : null
+export const defaultInitialState: UserState = {
+  user: null
+}
 
-export const useUserStore = create<UserState & Action>((set) => ({
-  user,
+export type UserStore = UserState & Action
+
+export const initUserStore = (): UserState => {
+  if (localStorage.getItem("user")) {
+    const user = localStorage.getItem("user");
+    return JSON.parse(user!)
+  } else {
+    return defaultInitialState;
+  }
+}
+
+export const createUserStore = (initState: UserState = defaultInitialState) => {
+  return createStore<UserStore>()((set) => ({
+    ...initState,
   setUser: (user: UserFinancialInfo) => set({ user }),
   setAccount: (account: AccountInfo) => set((state) => {
     if (!state.user) return state;
@@ -129,4 +140,8 @@ export const useUserStore = create<UserState & Action>((set) => ({
   
       return { user }
     })
-}))
+  }))
+}
+
+
+

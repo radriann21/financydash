@@ -16,7 +16,8 @@ import {
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useUserStore } from "../store/UserStore";
+import { useUserStore } from "../providers/userStoreProvider";
+import type { UserFinancialInfo } from "../types/types";
 
 
 export function UserForm() {

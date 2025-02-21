@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
-import { Search, PlusIcon } from "lucide-react"
+import { Search } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CustomDialog } from "@/app/components/CustomDialog"
-import { useUserStore } from "@/app/store/UserStore"
+import { useUserStore } from "@/app/providers/userStoreProvider"
 import { AccountCard } from "./AccountCard" 
 import { AccountForm } from "@/app/components/AccountForm"
 
@@ -48,7 +48,6 @@ export default function AccountsPage() {
         </div>
         <div>
           <CustomDialog 
-            icon={PlusIcon}
             btnTitle="Add Account"
             title="Add Account"
             description="Please, fill the form below to add a new account"

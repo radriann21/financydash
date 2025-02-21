@@ -4,7 +4,7 @@ import { transactionSchema } from "../schemas/transactionSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { useUserStore } from "../store/UserStore"
+import { useUserStore } from "../providers/userStoreProvider"
 
 import { Button } from "@/components/ui/button"
 import {

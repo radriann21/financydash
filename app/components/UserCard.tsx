@@ -8,7 +8,7 @@ import { DropdownMenu,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
-import { useUserStore } from "../store/UserStore"
+import { useUserStore } from "../providers/userStoreProvider"
 import { UserMenu } from "../utils/Menus"
 import Link from "next/link"
 

@@ -10,6 +10,7 @@ import { DropdownMenu,
   DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { useUserStore } from "../store/UserStore"
 import { UserMenu } from "../utils/Menus"
+import Link from "next/link"
 
 export const UserCard = () => {
 
@@ -39,8 +40,10 @@ export const UserCard = () => {
               {
                 UserMenu.map((item, index) => (
                   <DropdownMenuItem key={index} className="cursor-pointer">
-                    <item.icon className="h-4 w-4" />
-                    {item.title}
+                    <Link className="inline-flex items-center" href={item.url}>
+                      <item.icon className="h-4 w-4 mr-2" />
+                      {item.title}
+                    </Link>
                   </DropdownMenuItem>
                 ))
               }

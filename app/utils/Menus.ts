@@ -8,12 +8,12 @@ export const SidebarItems = [
   },
   {
     title: "Balance",
-    url: "#",
+    url: "/dashboard",
     icon: Scale,
   },
   {
     title: "Transactions",
-    url: "#",
+    url: "/dashboard/transactions",
     icon: ArrowLeftRight
   },
   {
@@ -31,10 +31,12 @@ export const SidebarItems = [
 export const UserMenu = [
   {
     title: 'User Settings',
+    url: '/dashboard/user',
     icon: User
   },
   {
     title: 'Logout',
+    url: '#',
     icon: LogOut
   }
 ]

@@ -7,14 +7,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import { PlusIcon } from "lucide-react";
 
-export const CustomDialog = ({ btnTitle, title, description, icon: Icon, Form, elementId }: { btnTitle: string; title: string; description: string; icon: React.ElementType; Form: React.ElementType; elementId?: string }) => {
+export const CustomDialog = ({ btnTitle, title, description, Form, elementId }: { btnTitle: string; title: string; description: string; Form: React.ElementType; elementId?: string }) => {
   return (
     <Dialog>
     <DialogTrigger asChild>
       <Button className="text-[12px] font-semibold">
         {btnTitle}
-        <Icon className="ml-2" />
+        <PlusIcon />
       </Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">

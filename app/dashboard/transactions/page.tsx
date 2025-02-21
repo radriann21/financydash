@@ -13,7 +13,7 @@ export default function TransactionsPage() {
           <div className="relative w-fit">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
-              placeholder="Search transactions..."
+              placeholder="Search description..."
               className="pl-10 bg-[#1A1A1A] border-0 text-white placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-gray-400"
             />
           </div>

@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { toast } from "@/hooks/use-toast"
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
@@ -48,6 +49,10 @@ export const TransactionsForm = () => {
 
   const onSubmit = (values: z.infer<typeof transactionSchema>) => {
     setTransaction({ id: crypto.randomUUID(), ...values })
+    toast({
+      title: "Transaction added",
+      description: "Your transaction has been added successfully",
+    })
     form.reset()
   }
 

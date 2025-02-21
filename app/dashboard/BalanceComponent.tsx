@@ -15,7 +15,7 @@ export const BalanceComponent = () => {
   const totalBalance = useUserStore((state) => state.user?.totalBalance);
 
   return (
-    <Card className="col-span-2 row-span-1 h-full bg-[#151518] font-geistSans flex flex-col">
+    <Card className="col-span-2 row-span-1 bg-[#151518] font-geistSans flex flex-col h-full">
       <CardHeader>
         <CardTitle className="text-3xl font-bold">
           <span className="text-muted-foreground text-sm block">Total Balance</span>
@@ -24,7 +24,7 @@ export const BalanceComponent = () => {
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden">
         <h5 className="text-slate-200">Accounts</h5>
-        <ScrollArea className="h-full w-full mt-4 px-2">
+        <ScrollArea className="h-[calc(100%-1rem)] w-full mt-4 px-2">
           {accounts?.length === 0 ? (
             <EmptyState
               title="There's nothing here yet."

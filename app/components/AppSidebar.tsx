@@ -18,17 +18,17 @@ import { UserCard } from "./UserCard"
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarHeader className="font-bold text-lg p-2 font-geistSans">FinancyDash</SidebarHeader>
+      <SidebarHeader className="font-bold text-xl p-4 font-geistSans">FinancyDash</SidebarHeader>
       <SidebarContent className="px-2">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {SidebarItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem key={item.title} className="my-2">
                   <SidebarMenuButton asChild>
                     <Link href={item.url}>
                       <item.icon />
-                      <span className="font-geistSans">{item.title}</span> 
+                      <span className="font-geistSans font-semibold">{item.title}</span> 
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

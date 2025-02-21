@@ -21,7 +21,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full p-8 bg-[#0F0F12]"> 
+      <main className="w-full p-6 bg-[#0F0F12]"> 
         <div className="w-full flex items-center space-x-2">
           <div className="flex items-center">
             <SidebarTrigger />

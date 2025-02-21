@@ -1,5 +1,3 @@
-"use client"
-
 import { UserForm } from "./components/UserForm";
 
 export default function Home() {
@@ -21,4 +19,3 @@ export default function Home() {
   );
 }
 
-// TODO - Improve UI

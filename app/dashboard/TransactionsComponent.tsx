@@ -15,7 +15,7 @@ export const TransactionsComponent = () => {
   const slicedTransactions = transactions?.slice(0, 7)
 
   return (
-    <Card className="col-span-4 row-span-1 p-4 bg-[#151518] h-fit font-geistSans">
+    <Card className="col-span-4 row-span-1 p-2 bg-[#151518] h-fit font-geistSans">
       <CardHeader className="w-full">
         <div className="w-full flex items-center justify-between">
           <CardTitle className="text-xl font-bold">Transactions</CardTitle>

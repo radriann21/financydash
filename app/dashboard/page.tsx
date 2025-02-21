@@ -6,7 +6,7 @@ import { TransactionsComponent } from "./TransactionsComponent";
 
 export default function Dashboard() {
   return (
-    <section className="mt-4 w-full grid grid-cols-4 grid-rows-2 gap-4 min-h-screen"> 
+    <section className="mt-4 w-full grid grid-cols-4 grid-rows-2 gap-4 h-screen"> 
       <BalanceComponent />
       <IncomesExpensesComponent />
       <TransactionsComponent />

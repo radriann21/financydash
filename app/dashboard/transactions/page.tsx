@@ -1,11 +1,18 @@
+"use client"
+
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
 import { TransactionsTable } from "./TransactionsTable"
 import { CustomDialog } from "@/app/components/CustomDialog"
 import { TransactionsForm } from "@/app/components/TransactionsForm"
+import { useFiltersStore } from "@/app/providers/filterStoreProvider"
 
 export default function TransactionsPage() {
+
+  const setSearchQuery = useFiltersStore((state) => state.setSearchQuery)
+  const setTransactionType = useFiltersStore((state) => state.setTransactionType)
+
   return (
     <section className="w-full mt-4 font-geistSans">
       <div className="w-full flex justify-between items-center">
@@ -15,9 +22,10 @@ export default function TransactionsPage() {
             <Input
               placeholder="Search description..."
               className="pl-10 bg-[#1A1A1A] border-0 text-white placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-gray-400"
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <Select>
+          <Select onValueChange={(value) => setTransactionType(value as "all" | "income" | "expense")}>
             <SelectTrigger className="w-fit">
               <SelectValue placeholder="Select a type" />
             </SelectTrigger>

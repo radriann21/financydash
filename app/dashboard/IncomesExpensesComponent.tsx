@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import {
   ChartConfig,
@@ -8,10 +8,10 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-import { Button } from "@/components/ui/button"
-import { ArrowRightToLine } from "lucide-react"
 import { useUserStore } from "../providers/userStoreProvider"
 import { groupTransactions } from "../utils/groupTransactions"
+import { EmptyState } from "../components/EmptyState"
+import { ClipboardX } from "lucide-react"
 
 export const IncomesExpensesComponent = () => {
 
@@ -36,7 +36,15 @@ export const IncomesExpensesComponent = () => {
     <span className="text-sm text-slate-400 font-bold">Monthly</span>
   </CardHeader>
   <CardContent className="flex-1 overflow-hidden">
-    <ChartContainer className="h-full w-full" config={chartConfig}>
+    {
+      transactions?.length === 0 
+      ? <EmptyState 
+          title="No data yet." 
+          description="When you make a transaction, it will appear here." 
+          icon={ClipboardX} 
+        /> 
+      : (
+        <ChartContainer className="h-full w-full" config={chartConfig}>
       <AreaChart
         accessibilityLayer
         data={chartData}
@@ -72,13 +80,9 @@ export const IncomesExpensesComponent = () => {
         />
       </AreaChart>
     </ChartContainer>
+      )
+    }
   </CardContent>
-  <CardFooter className="flex justify-end">
-    <Button className="text-[12px] font-bold">
-      <ArrowRightToLine className="mr-2" /> 
-      View more
-    </Button>
-  </CardFooter>
 </Card>
   )
 }

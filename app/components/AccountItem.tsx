@@ -1,5 +1,6 @@
 import { accountIcons } from "../utils/accountsTypes"
 import { setColor } from "../utils/setColors"
+import { AccountInfo } from "../types/types"
 
 export const AccountItem = ({ account }: { account: AccountInfo }) => {
   const Icon = accountIcons[account.type as keyof typeof accountIcons]

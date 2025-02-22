@@ -1,3 +1,5 @@
+import { AccountInfo } from "../types/types"
+
 export function setColor(account: AccountInfo) {
   const colors: Record<AccountInfo['type'], string> = {
     bank: 'stroke-green-500',

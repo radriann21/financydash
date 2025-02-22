@@ -1,15 +1,10 @@
-import { Goal, Home, Scale, Wallet, User, LogOut, ArrowLeftRight } from "lucide-react"
+import { Goal, Home, Wallet, User, LogOut, ArrowLeftRight } from "lucide-react"
 
 export const SidebarItems = [
   {
     title: "Home",
     url: "/dashboard",
     icon: Home,
-  },
-  {
-    title: "Balance",
-    url: "/dashboard",
-    icon: Scale,
   },
   {
     title: "Transactions",

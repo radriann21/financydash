@@ -12,4 +12,3 @@ export const transactionSchema = z.object({
   type: z.nativeEnum(TransactionType, { required_error: 'The type is required', invalid_type_error: 'The type must be a TransactionType' }),
   accountId: z.string({ required_error: 'Need to select an account' })
 })
-

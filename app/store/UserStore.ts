@@ -8,6 +8,8 @@ type UserState = {
 
 type Action = {
   setUser: (user: UserFinancialInfo) => void,
+  changeUserName: (name: string) => void,
+  deleteUser: () => void,
   setAccount: (account: AccountInfo) => void,
   deleteAccount: (id: string) => void,
   editAccount: (id: string, account: AccountInfo) => void,
@@ -31,6 +33,20 @@ export const createUserStore = (initState: UserState = defaultInitialState) => {
     (set) => ({
       ...initState,
       setUser: (user: UserFinancialInfo) => set({ user }),
+      changeUserName: (name: string) => set((state) => {
+        if (!state.user) return state;
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            username: name
+          }
+        }
+      }),
+      deleteUser: () => {
+        set({ user: null })
+        localStorage.removeItem('user')
+      },
       setAccount: (account: AccountInfo) => set((state) => {
         if (!state.user) return state;
         
@@ -102,10 +118,6 @@ export const createUserStore = (initState: UserState = defaultInitialState) => {
       
           const updateAccountBalance = (account: AccountInfo): AccountInfo => {
             if (account.id !== transaction.accountId) return account;
-      
-            if (transaction.type === "expense" && account.balance < transaction.amount) {
-              throw new Error("Insufficient balance in the account");
-            }
       
             const newBalance =
               transaction.type === "expense"

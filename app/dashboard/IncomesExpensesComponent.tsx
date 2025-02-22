@@ -31,8 +31,9 @@ export const IncomesExpensesComponent = () => {
 
   return (
 <Card className="col-span-2 row-span-1 h-full bg-[#151518] flex flex-col space-y-4 font-geistSans">
-  <CardHeader>
+  <CardHeader className="w-full flex flex-row items-center justify-between">
     <CardTitle className="text-xl">Incomes and Expenses</CardTitle>
+    <span className="text-sm text-slate-400 font-bold">Monthly</span>
   </CardHeader>
   <CardContent className="flex-1 overflow-hidden">
     <ChartContainer className="h-full w-full" config={chartConfig}>

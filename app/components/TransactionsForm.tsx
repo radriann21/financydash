@@ -13,7 +13,8 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormDescription
+  FormDescription,
+  FormMessage
 } from "@/components/ui/form"
 
 import {
@@ -48,6 +49,14 @@ export const TransactionsForm = () => {
   })
 
   const onSubmit = (values: z.infer<typeof transactionSchema>) => {
+    const account = accounts?.find((a) => a.id === values.accountId)
+    if ((account?.balance || 0) < values.amount && values.type === 'expense') {
+      toast({
+        title: "Insufficient balance",
+        description: "The account balance is insufficient for this transaction",
+      })
+      return
+    }
     setTransaction({ id: crypto.randomUUID(), ...values })
     toast({
       title: "Transaction added",
@@ -93,6 +102,7 @@ export const TransactionsForm = () => {
               <FormDescription>
                 The date is the actual one by default.
               </FormDescription>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -105,6 +115,7 @@ export const TransactionsForm = () => {
               <FormControl>
                 <Input type="string" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -133,6 +144,7 @@ export const TransactionsForm = () => {
                   ))}
                 </SelectContent>
               </Select>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -165,6 +177,7 @@ export const TransactionsForm = () => {
                   <SelectItem value="expense">Expense</SelectItem>
                 </SelectContent>
               </Select>
+              <FormMessage />
             </FormItem>
           )}
         />
